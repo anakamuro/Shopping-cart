@@ -23,7 +23,7 @@ function Cart() {
                     <img src={image} alt={name} style={{height: '6rem'}}/>
                   </div>
                   <div>{name}</div>
-                  <div>{price}</div>
+                  <div>${price}</div>
                   <div className="countHandler">
                     <button onClick={() => removeFromCart(id)}>-</button>
                     <input value={cartItems[id]} onChange={(e) => updateCartItemCount(Number(e.target.value), id)}/>
