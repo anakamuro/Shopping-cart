@@ -1,0 +1,41 @@
+.active {
+    background-color: blue;
+    padding: 10px 10px;
+}
+
+nav {
+   background-color: black;
+   position: sticky;
+   display: flex;
+   justify-content: center;
+   width: 100vw;
+   height: 110px;
+   z-index: 99;
+   top: 0;
+   left: 0;
+}
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80vw;
+    list-style: none;
+}
+ul li a{
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+}
+ul li a:hover {
+    background-color: blue;
+    padding: 10px 10px;
+}
+ul li a:not(.active):hover{
+    background-color: blue;
+}
+
+img {
+    height: 70px;
+    width: 70px;
+    background-color: black;
+}

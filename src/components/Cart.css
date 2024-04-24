@@ -1,0 +1,15 @@
+/* tr {
+    display: flex;
+    align-items: center;
+} */
+.card {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+input {
+    width: 50px;
+}
+.btn {
+  margin: 10px;
+}
