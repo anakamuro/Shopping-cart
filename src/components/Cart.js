@@ -1,22 +1,22 @@
-import React, {useContext} from 'react';
-import {ShopContext} from "../context/ShopContext";
-import {products} from "./products";
+import React from 'react';
 import {useNavigate} from "react-router-dom";
 import "./Cart.css";
 
-function Cart() {
-  const { cartItems, addToCart, removeFromCart, updateCartItemCount, getTotalCartAmount} = useContext(ShopContext);
-  const totalAmount = getTotalCartAmount();
+
+function Cart({cartItems, addToCart, removeToCart}) {
   const navigate = useNavigate();
+  const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
   return (
     <section className="cart">
-      <div className="carrtItems">
+      <div className="cartItems">
         <div>
           <h1>Your Cart Items</h1>
         </div>
-          {products.map((product) => {
-            if(cartItems[product.id] !== 0){
+        <div>{cartItems.length === 0 && <div>Cart is Empty</div>}</div>
+          {cartItems.map((product) => {
+            // if(cartItems[product.id] !== 0){
                const {id, image, name, price}= product;
+               console.log(product)
                 return (
                 <div className="card" key={id}>
                   <div>
@@ -25,23 +25,23 @@ function Cart() {
                   <div>{name}</div>
                   <div>${price}</div>
                   <div className="countHandler">
-                    <button onClick={() => removeFromCart(id)}>-</button>
-                    <input value={cartItems[id]} onChange={(e) => updateCartItemCount(Number(e.target.value), id)}/>
-                    <button onClick={() => addToCart(id)}>+</button>
+                    {/* <button onClick={() => removeFromCart(id)}>-</button>
+                    <input value={cartItems[id]} onChange={(e) => updateCartItemCount(Number(e.target.value), id)}/> */}
+                    <button onClick={() => addToCart(product)}>+</button>
+                    <button onClick={() => removeToCart(product)}>-</button>
+                  </div>
+                  <div>
+                    {product.quantity} * ${product.price.toFixed(2)}
                   </div>
                 </div>
-                )
-              }})}
+                )}
+                )}
       </div>
-      {totalAmount > 0 ? (
       <div className="checkout">
-                    <p> Subtotal: ${totalAmount}</p>
+                    <p> Subtotal: ${itemsPrice.toFixed(2)}</p>
                     <button className="btn" onClick={() => navigate('/')}>Continue Shopping</button>
                     <button className="btn">Checkout</button>
       </div>
-      ) : (
-       <h1> Your Cart is Empty</h1>
-      )}
     </section>
   )
 }
