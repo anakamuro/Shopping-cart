@@ -1,5 +1,5 @@
 # Reference
 
-React Shopping Cart Ecommerce Beginner Website - Build & Deploy A React Beginner Project
+React Shopping Cart For Absolute Beginners [2022]
 
-by PedroTech
+by Coding with Basir
